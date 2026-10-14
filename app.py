@@ -312,3 +312,24 @@ elif page == "Research Explorer":
         "before using its data in your project."
     )
 
+
+
+    st.subheader("Research Evidence Table")
+
+    try:
+        research_df = pd.read_csv("research_data.csv")
+        st.dataframe(
+            research_df,
+            use_container_width=True,
+            hide_index=True
+        )
+        st.caption(
+            "Search links are starting points. Verify actual papers "
+            "and their findings before using numerical values."
+        )
+    except FileNotFoundError:
+        st.warning(
+            "research_data.csv was not found. Check that it is "
+            "committed in the repository."
+        )
+
