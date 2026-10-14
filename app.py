@@ -398,3 +398,47 @@ elif page == "Patent Explorer":
         )
 
 
+elif page == "Project Dashboard":
+    st.title("Paddy2Power BioRefinery")
+    st.subheader("Paddy Straw to Bioethanol and Residue Valorisation")
+
+    st.write(
+        "A conceptual biorefinery that explores converting paddy "
+        "straw into fermentable sugars and bioethanol while "
+        "investigating useful applications for the remaining solids."
+    )
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric("Target sugar recovery", "≥30%", help="Project target, not a validated result.")
+
+    with col2:
+        st.metric("Feedstock", "Paddy straw")
+
+    with col3:
+        st.metric("Platform", "Dry-lab prototype")
+
+    st.subheader("Process overview")
+
+    stages = [
+        "1. Straw preparation",
+        "2. Pretreatment",
+        "3. Solid-liquid separation",
+        "4. Enzymatic hydrolysis",
+        "5. Sugar recovery",
+        "6. Fermentation",
+        "7. Ethanol purification",
+        "8. Residue valorisation"
+    ]
+
+    for stage in stages:
+        st.write("➡️ " + stage)
+
+    st.info(
+        "This is a conceptual design. The ≥30% sugar-recovery value "
+        "is a target, not an experimentally demonstrated result. "
+        "Material-balance and economic outputs depend on the "
+        "assumptions entered in their respective pages."
+    )
+
