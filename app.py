@@ -375,3 +375,25 @@ elif page == "Patent Explorer":
     )
 
 
+
+    st.subheader("Patent Evidence Table")
+
+    try:
+        patent_df = pd.read_csv("patent_data.csv")
+        st.dataframe(
+            patent_df,
+            use_container_width=True,
+            hide_index=True
+        )
+        st.caption(
+            "The entries are search topics, not confirmed patents. "
+            "Verify publication numbers, claims and legal status "
+            "before citing any patent."
+        )
+    except FileNotFoundError:
+        st.warning(
+            "patent_data.csv was not found. Check that it is "
+            "committed in the repository."
+        )
+
+
