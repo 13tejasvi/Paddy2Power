@@ -102,6 +102,42 @@ elif page == "Virtual Plant":
         "The funnel values are placeholders to visualise the stages. "
         "They are not a verified material balance."
     )
+    
+    st.subheader("Biorefinery Process Flow")
+
+    flow_stages = [
+        "Paddy Straw",
+        "Size Reduction",
+        "Pretreatment",
+        "Solid-Liquid Separation",
+        "Enzymatic Hydrolysis",
+        "Sugar Recovery",
+        "Fermentation",
+        "Ethanol Purification"
+    ]
+
+    for i, stage in enumerate(flow_stages):
+        st.markdown(f"**{stage}**")
+        if i < len(flow_stages) - 1:
+            st.markdown("↓")
+
+    st.markdown("---")
+    st.subheader("Residue and Utility Streams")
+
+    st.write(
+        "Residual solids → composition assessment → potential "
+        "boiler fuel, lignin recovery, or materials applications."
+    )
+    st.write(
+        "Utilities: water, electricity, process heat and chemicals. "
+        "Wastewater requires appropriate treatment."
+    )
+
+    st.caption(
+        "Conceptual process flow only. Actual stream quantities, "
+        "energy demand and product yields require validation."
+    )
+
 
 elif page == "Material Balance":
     st.header("Material Balance Calculator")
