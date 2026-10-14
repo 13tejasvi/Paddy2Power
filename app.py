@@ -20,6 +20,7 @@ page = st.sidebar.radio(
         "Virtual Plant",
         "Material Balance",
         "Economic Assessment",
+        "Research Explorer",
         "Residue Valorisation"
     ]
 )
@@ -271,3 +272,43 @@ elif page == "Residue Valorisation":
     - Consider wastewater, chemicals, ash and environmental impacts.
     - Count residue revenue only when a supported price and usable product exist.
     """)
+
+
+elif page == "Research Explorer":
+    st.header("Research Explorer")
+    st.write(
+        "Explore scientific literature related to paddy straw "
+        "pretreatment, fermentable sugar recovery, bioethanol, "
+        "and residue valorisation."
+    )
+
+    research_topics = [
+        (
+            "Paddy straw pretreatment and bioethanol",
+            "https://scholar.google.com/scholar?q=rice+straw+pretreatment+bioethanol"
+        ),
+        (
+            "Enzymatic hydrolysis and sugar recovery",
+            "https://scholar.google.com/scholar?q=rice+straw+enzymatic+hydrolysis+sugar+recovery"
+        ),
+        (
+            "Lignin-rich residue valorisation",
+            "https://scholar.google.com/scholar?q=rice+straw+lignin+residue+valorisation"
+        ),
+        (
+            "Bioethanol techno-economic assessment",
+            "https://scholar.google.com/scholar?q=rice+straw+bioethanol+techno-economic+assessment"
+        )
+    ]
+
+    for topic, link in research_topics:
+        with st.container(border=True):
+            st.subheader(topic)
+            st.link_button("Find research papers", link)
+
+    st.info(
+        "These links open literature searches, not verified individual "
+        "papers. Check each paper's methods, results and limitations "
+        "before using its data in your project."
+    )
+
