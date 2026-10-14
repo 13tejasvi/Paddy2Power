@@ -334,3 +334,44 @@ elif page == "Research Explorer":
             "committed in the repository."
         )
 
+
+elif page == "Patent Explorer":
+    st.header("Patent Explorer")
+
+    st.write(
+        "Explore existing patent documents related to biomass "
+        "pretreatment, rice straw conversion, bioethanol production, "
+        "and lignin-rich residue utilisation."
+    )
+
+    patent_topics = [
+        (
+            "Rice straw pretreatment",
+            "https://patents.google.com/?q=rice+straw+pretreatment"
+        ),
+        (
+            "Cellulosic biomass to bioethanol",
+            "https://patents.google.com/?q=cellulosic+biomass+bioethanol"
+        ),
+        (
+            "Enzymatic hydrolysis of biomass",
+            "https://patents.google.com/?q=biomass+enzymatic+hydrolysis"
+        ),
+        (
+            "Lignin and biomass residue valorisation",
+            "https://patents.google.com/?q=lignin+biomass+valorisation"
+        )
+    ]
+
+    for topic, link in patent_topics:
+        with st.container(border=True):
+            st.subheader(topic)
+            st.link_button("Search patents", link)
+
+    st.info(
+        "These links open patent searches, not verified individual "
+        "patents. Before citing a patent, check its publication number, "
+        "claims, applicant, filing date and current legal status."
+    )
+
+
