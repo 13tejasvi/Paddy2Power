@@ -21,6 +21,7 @@ page = st.sidebar.radio(
         "Material Balance",
         "Economic Assessment",
         "Research Explorer",
+        "Patent Explorer",
         "Residue Valorisation"
     ]
 )
