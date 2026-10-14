@@ -478,3 +478,49 @@ elif page == "Project Dashboard":
         "assumptions entered in their respective pages."
     )
 
+
+
+    st.subheader("Download Project Summary")
+
+    report_text = """
+Paddy2Power BioRefinery
+Paddy Straw to Bioethanol and Residue Valorisation
+
+PROJECT OVERVIEW
+A conceptual biorefinery exploring the conversion of paddy straw
+into fermentable sugars and bioethanol, with possible applications
+for the remaining solids.
+
+PROCESS STAGES
+1. Straw preparation and size reduction
+2. Pretreatment
+3. Solid-liquid separation
+4. Enzymatic hydrolysis
+5. Sugar recovery
+6. Fermentation
+7. Ethanol purification
+8. Residue assessment and valorisation
+
+PROJECT TARGET
+Target sugar recovery: at least 30% of theoretical fermentable
+sugar potential. This is a target, not a validated experimental result.
+
+VALIDATION REQUIREMENTS
+- Verify feedstock composition and literature values.
+- Validate material balances and ethanol yield assumptions.
+- Estimate energy, water, chemical and wastewater requirements.
+- Verify operating costs and product prices with reliable sources.
+- Assess residue composition before selecting an application.
+
+NOTE
+This report describes a conceptual dry-lab project, not a validated
+industrial process or a demonstrated commercial profit.
+"""
+
+    st.download_button(
+        label="Download Project Summary",
+        data=report_text,
+        file_name="Paddy2Power_Project_Summary.txt",
+        mime="text/plain"
+    )
+
