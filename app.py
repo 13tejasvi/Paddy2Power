@@ -16,6 +16,7 @@ st.sidebar.title("Navigation")
 page = st.sidebar.radio(
     "Choose a page",
     [
+        "Project Dashboard",
         "Home",
         "Virtual Plant",
         "Material Balance",
