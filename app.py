@@ -562,11 +562,11 @@ elif page == "RiceGuard":
 
 
 
-st.divider()
-st.header("🌾 RiceGuard – Early Plant Pathogen Detection")
-st.write(
-    "A proposed two-robot system that supports early sampling "
-    "and laboratory-based DNA detection in rice fields."
+   st.divider()
+   st.header("🌾 RiceGuard – Early Plant Pathogen Detection")
+   st.write(
+       "A proposed two-robot system that supports early sampling "
+       "and laboratory-based DNA detection in rice fields."
 )
 
 st.info(
