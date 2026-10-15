@@ -603,7 +603,7 @@ with st.expander("View the LAMP testing workflow", expanded=True):
     The laboratory result is entered into RiceGuard along with the
     sample ID, test date, controls, and recommended follow-up.
     """)
-   st.write(
+st.write(
        "A proposed two-robot system that supports early sampling "
        "and laboratory-based DNA detection in rice fields."
 )
