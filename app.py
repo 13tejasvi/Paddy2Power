@@ -555,14 +555,12 @@ industrial process or a demonstrated commercial profit.
     )
 
 
-
+elif page == "RiceGuard":
 # ==========================================
 # RICEGUARD - DNA-BASED EARLY DETECTION
 # ==========================================
 
-import streamlit as st
-import pandas as pd
-from datetime import datetime
+
 
 st.divider()
 st.header("🌾 RiceGuard – Early Plant Pathogen Detection")
