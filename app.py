@@ -565,7 +565,7 @@ elif page == "RiceGuard":
 
    st.divider()
    st.header("🌾 RiceGuard – Early Plant Pathogen Detection")
-    st.subheader("🧬 How LAMP Assay Works")
+   st.subheader("🧬 How LAMP Assay Works")
    st.write(
     "LAMP stands for Loop-Mediated Isothermal Amplification. "
     "It is a molecular technique used to amplify a specific DNA target "
