@@ -524,3 +524,155 @@ industrial process or a demonstrated commercial profit.
         mime="text/plain"
     )
 
+
+
+# ==========================================
+# RICEGUARD - DNA-BASED EARLY DETECTION
+# ==========================================
+
+import streamlit as st
+import pandas as pd
+from datetime import datetime
+
+st.divider()
+st.header("🌾 RiceGuard – Early Plant Pathogen Detection")
+st.write(
+    "A proposed two-robot system that supports early sampling "
+    "and laboratory-based DNA detection in rice fields."
+)
+
+st.info(
+    "Prototype demonstration: the robots and sensors are not connected "
+    "to live hardware. Entered results are records, not automatic DNA detection."
+)
+
+# Two-robot workflow
+st.subheader("🤖 Two-Robot Monitoring System")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("### Robot 1 – Fixed Monitor")
+    st.write("Purpose: Monitor the field and identify areas for further inspection.")
+    temperature = st.number_input(
+        "Temperature (°C)", min_value=0.0, max_value=60.0, value=30.0
+    )
+    humidity = st.number_input(
+        "Relative humidity (%)", min_value=0.0, max_value=100.0, value=75.0
+    )
+    leaf_wetness = st.selectbox(
+        "Leaf wetness observation",
+        ["Not recorded", "Leaves wet", "Leaves dry"]
+    )
+
+with col2:
+    st.markdown("### Robot 2 – Mobile Sampler")
+    st.write("Purpose: Inspect a selected area and help collect a suitable sample.")
+    zone = st.text_input("Field zone", placeholder="e.g. Zone B3")
+    sample_id = st.text_input("Sample ID", placeholder="e.g. RZ-001")
+    sample_date = st.date_input("Sample collection date")
+
+st.caption(
+    "Environmental readings alone cannot confirm plant infection. "
+    "Risk rules require validation for the crop, pathogen and local conditions."
+)
+
+st.divider()
+
+# DNA test result entry
+st.subheader("🧬 Laboratory DNA Test Record")
+
+with st.form("riceguard_dna_form"):
+    pathogen = st.selectbox(
+        "Target pathogen",
+        [
+            "Pyricularia oryzae (rice blast)",
+            "Other pathogen – specify with laboratory"
+        ]
+    )
+
+    method = st.selectbox(
+        "DNA detection method",
+        ["LAMP", "PCR", "Other validated method"]
+    )
+
+    result = st.selectbox(
+        "Laboratory result",
+        ["Pending", "Target DNA detected",
+         "Target DNA not detected", "Invalid / inconclusive"]
+    )
+
+    controls = st.selectbox(
+        "Test control status",
+        ["Not entered", "Valid", "Failed"]
+    )
+
+    notes = st.text_area(
+        "Laboratory notes",
+        placeholder="Enter the result supplied by the laboratory."
+    )
+
+    submitted = st.form_submit_button("Save DNA Test Record")
+
+if submitted:
+    if not sample_id.strip() or not zone.strip():
+        st.error("Please enter both a sample ID and a field zone.")
+    elif result != "Pending" and controls != "Valid":
+        st.error(
+            "A conclusive result requires valid laboratory controls. "
+            "Check with the laboratory before recording a final result."
+        )
+    else:
+        record = {
+            "Sample ID": sample_id.strip(),
+            "Field Zone": zone.strip(),
+            "Collection Date": str(sample_date),
+            "Target Pathogen": pathogen,
+            "Method": method,
+            "Result": result,
+            "Control Status": controls,
+            "Notes": notes,
+            "Record Time": datetime.now().isoformat(timespec="seconds")
+        }
+
+        if "riceguard_records" not in st.session_state:
+            st.session_state["riceguard_records"] = []
+
+        st.session_state["riceguard_records"].append(record)
+        st.success("DNA test record added to this session.")
+
+# Display saved records
+st.subheader("📋 Sample and Test History")
+
+records = st.session_state.get("riceguard_records", [])
+
+if records:
+    st.dataframe(pd.DataFrame(records), use_container_width=True)
+    csv_data = pd.DataFrame(records).to_csv(index=False).encode("utf-8")
+
+    st.download_button(
+        "Download test records as CSV",
+        data=csv_data,
+        file_name="riceguard_test_records.csv",
+        mime="text/csv"
+    )
+else:
+    st.write("No test records entered in this session.")
+
+st.divider()
+
+# Farmer guidance
+st.subheader("📱 Farmer Follow-up")
+
+st.write(
+    "- If target DNA is detected with valid controls, flag the sample location "
+    "for expert review and appropriate follow-up.\n"
+    "- If target DNA is not detected, continue monitoring when risk remains.\n"
+    "- If the result is invalid or inconclusive, consult the laboratory about retesting."
+)
+
+st.warning(
+    "This prototype records laboratory results. It does not itself extract "
+    "DNA, run LAMP/PCR, control robots or diagnose plant disease."
+)
+
