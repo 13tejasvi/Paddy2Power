@@ -27,7 +27,9 @@ page = st.sidebar.radio(
         "Economic Assessment",
         "Research Explorer",
         "Patent Explorer",
-        "Residue Valorisation"
+        "Residue Valorisation",
+        "RiceGuard"
+        
     ]
 )
 
