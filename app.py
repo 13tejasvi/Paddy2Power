@@ -556,9 +556,9 @@ industrial process or a demonstrated commercial profit.
 
 
 elif page == "RiceGuard":
-# ==========================================
-# RICEGUARD - DNA-BASED EARLY DETECTION
-# ==========================================
+   # ==========================================
+   # RICEGUARD - DNA-BASED EARLY DETECTION
+   # ==========================================
 
 
 
