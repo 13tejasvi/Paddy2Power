@@ -565,6 +565,44 @@ elif page == "RiceGuard":
 
    st.divider()
    st.header("🌾 RiceGuard – Early Plant Pathogen Detection")
+    st.subheader("🧬 How LAMP Assay Works")
+   st.write(
+    "LAMP stands for Loop-Mediated Isothermal Amplification. "
+    "It is a molecular technique used to amplify a specific DNA target "
+    "at a constant temperature. RiceGuard explains the testing workflow "
+    "and records results provided by the laboratory."
+)
+with st.expander("View the LAMP testing workflow", expanded=True):
+
+    st.markdown("""
+    **Stage 1: Plant Sample Collection**
+
+    A rice plant sample is collected from the field and labelled
+    with a unique sample ID.
+
+    **Stage 2: DNA Preparation**
+
+    DNA is prepared from the sample using an appropriate
+    laboratory extraction method.
+
+    **Stage 3: LAMP Amplification**
+
+    Specially designed primers recognise the target DNA sequence.
+    A DNA polymerase amplifies the target at a constant temperature,
+    commonly around 60–65°C depending on the assay.
+
+    **Stage 4: Detection and Interpretation**
+
+    The laboratory detects the amplification using the validated
+    assay's detection method, such as a colour change or fluorescence
+    where applicable. Positive, negative, or invalid results must be
+    interpreted using the assay instructions and controls.
+
+    **Stage 5: Recording and Follow-up**
+
+    The laboratory result is entered into RiceGuard along with the
+    sample ID, test date, controls, and recommended follow-up.
+    """)
    st.write(
        "A proposed two-robot system that supports early sampling "
        "and laboratory-based DNA detection in rice fields."
