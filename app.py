@@ -9,8 +9,12 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🌾 Paddy2Power BioRefinery")
-st.caption("Conceptual process design for converting paddy straw into bioethanol")
+
+st.title("🌾 Power 2 Paddy Lifecycle")
+st.caption(
+    "Connecting paddy straw valorisation with early plant pathogen surveillance"
+)
+
 
 st.sidebar.title("Navigation")
 page = st.sidebar.radio(
@@ -32,33 +36,57 @@ st.sidebar.info(
     "Default values are illustrative and require research validation."
 )
 
+
 if page == "Home":
-    st.header("Turning Agricultural Waste into Value")
+    st.header("Welcome to Power 2 Paddy Lifecycle")
+
     st.write(
-        "Paddy2Power explores a potential biorefinery route that "
-        "converts paddy straw into fermentable sugars and bioethanol, "
-        "while identifying useful routes for the remaining biomass."
+        "An integrated biotechnology platform exploring sustainable "
+        "paddy straw utilisation and early rice disease surveillance."
     )
 
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Target sugar recovery", "≥30%", help="Project target, not a measured result")
-    c2.metric("Main product", "Bioethanol")
-    c3.metric("Feedstock", "Paddy straw")
+    st.divider()
 
-    st.subheader("Project objectives")
-    st.markdown("""
-    - Develop a conceptual paddy straw-to-bioethanol process.
-    - Estimate theoretical and recovered fermentable sugar.
-    - Estimate ethanol production using adjustable assumptions.
-    - Explore equipment, operating costs and potential revenue.
-    - Identify useful applications for lignin-rich residual biomass.
-    """)
+    col1, col2 = st.columns(2)
 
-    st.warning(
-        "This is a preliminary calculation tool, not an experimentally "
-        "validated industrial process. Results depend on feedstock "
-        "composition, pretreatment, enzymes, fermentation and recovery."
+    with col1:
+        st.subheader("♻️ Paddy Straw Biorefinery")
+        st.write(
+            "Explore paddy straw conversion into fermentable sugars "
+            "and bioethanol, along with material balance, economic "
+            "assessment and residue valorisation."
+        )
+
+    with col2:
+        st.subheader("🧬 RiceGuard")
+        st.write(
+            "Organise plant sample records and document laboratory "
+            "DNA test results for early rice disease surveillance."
+        )
+
+    st.divider()
+
+    st.subheader("Biorefinery Workflow")
+    st.write(
+        "Paddy Straw → Pretreatment → Enzymatic Hydrolysis "
+        "→ Sugar Recovery → Fermentation → Ethanol Purification "
+        "→ Residue Valorisation"
     )
+
+    st.subheader("RiceGuard Workflow")
+    st.write(
+        "Field Monitoring → Sample Collection → Laboratory DNA Testing "
+        "→ Result Recording → Expert-Guided Follow-up"
+    )
+
+    st.info(
+        "This is a conceptual prototype. RiceGuard records test results "
+        "but does not perform DNA testing. Simulated readings and "
+        "example records must not be treated as real laboratory results."
+    )
+
+
+
 
 elif page == "Virtual Plant":
     st.header("Virtual Plant — Process Flow")
